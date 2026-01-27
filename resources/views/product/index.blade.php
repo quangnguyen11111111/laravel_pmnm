@@ -33,8 +33,15 @@
         <th class='border text-center'>Tên sản phẩm</th>
         <th class='border text-center'>Số lượng</th>
     </tr>
-
+    @foreach ($products as $product)
     <tr class='border text-center h-15'>
+        <td class='border text-center'>{{ $product->id }}</td>
+        <td class='border text-center'>{{ $product->name }}</td>
+        <td class='border text-center'>{{ $product->quantity }}</td>
+    </tr>
+    @endforeach
+
+    <!-- <tr class='border text-center h-15'>
         <td class='border text-center'>01</td>
         <td class='border text-center'>Sản phẩm 01</td>
         <td class='border text-center'>100</td>
@@ -48,7 +55,7 @@
         <td class='border text-center'>03</td>
         <td class='border text-center'>Sản phẩm 03</td>
         <td class='border text-center'>100</td>
-    </tr>
+    </tr> -->
 </table>
 
 <button class='bg-blue-500 px-5 py-3 rounded-3xl mt-10 text-white hover:bg-blue-400'>

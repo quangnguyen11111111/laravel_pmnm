@@ -1,22 +1,30 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProductController;
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
 
 Route::prefix('/product')->group(function () {
-    Route::get('', function () {
-       return view('product.index');
-    })-> name('index');
-    Route::get('/add', function () {
-       return view('product.add');
-    })-> name('add');
-    Route::get('/{id?}', function ( string $id = '123') {
-       return "Mã sản phẩm ".$id;
-    })->name('product.show');
+
+     Route::controller(ProductController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/add', 'create')->name('add');
+        Route::get('/detail/{id?}', 'getDetail')->name('show');
+        Route::post('/store', 'store');
+    });
+
+});
+Route::prefix('/auth')->group(function () {
+     Route::controller(ProductController::class)->group(function () {
+        Route::get('/login', 'login')->name('login');
+        Route::post('/checkLogin', 'checkLogin');
+        Route::get('/register', 'register')->name('register');
+        Route::post('/checkRegister', 'checkRegister');
+    });
+
 });
 
 Route::get('/student/{name?}/{mssv?}', function (

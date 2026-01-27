@@ -20,6 +20,11 @@
         @endif
     </head>
     <body class="bg-[#FDFDFC] text-[#1b1b18] flex p-6 lg:p-8 items-center  min-h-screen flex-col">
+                    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
         <div class="">
             <h2 class='font-[800] text-3xl'>Chào mừng đến với homePage</h2>
             <div class="flex flex-col gap-5 mt-10 ">
@@ -27,13 +32,19 @@
                     <a href="{{route('index')}}">Đường dẫn tới trang chủ product</a>
                 </div>
                 <div class="bg-gray-300 rounded-lg p-3 text-black text-lg hover:text-blue-500 ">
-                    <a href="{{ route('product.show',123) }}">Đường dẫn tới mã sản phẩm </a>
+                    <a href="{{route('login')}}">Đường dẫn tới trang đăng nhập</a>
+                </div>
+                <div class="bg-gray-300 rounded-lg p-3 text-black text-lg hover:text-blue-500 ">
+                    <a href="{{route('register')}}">Đường dẫn tới trang đăng ký</a>
+                </div>
+                <div class="bg-gray-300 rounded-lg p-3 text-black text-lg hover:text-blue-500 ">
+                    <a href="{{ route('show',123) }}">Đường dẫn tới mã sản phẩm </a>
                 </div>
                 <div class="bg-gray-300 rounded-lg p-3 text-black text-lg hover:text-blue-500 ">
                     <a href="{{ route('sinhvien') }}">Đường dẫn tới thông tin sinh viên mặc định </a>
                 </div>
                 <div class="bg-gray-300 rounded-lg p-3 text-black text-lg hover:text-blue-500 ">
-                    <a href="{{ route('sinhvien','Nguyễn Việt Quang', 0313767) }}">Đường dẫn tới thông tin sinh viên làm bài</a>
+                    <a href="{{ route('sinhvien',['Nguyễn Việt Quang', '0313767']) }}">Đường dẫn tới thông tin sinh viên làm bài</a>
                 </div>
                 <div class="bg-gray-300 rounded-lg p-3 text-black text-lg hover:text-blue-500 ">
                     <a href="{{ route('banco',5) }}">Đường dẫn tới trang bàn cờ 5x5 </a>
