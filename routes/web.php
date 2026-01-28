@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AuthController;
 Route::get('/', function () {
     return view('home');
 })->name('home');
@@ -18,7 +19,7 @@ Route::prefix('/product')->group(function () {
 
 });
 Route::prefix('/auth')->group(function () {
-     Route::controller(ProductController::class)->group(function () {
+     Route::controller(AuthController::class)->group(function () {
         Route::get('/login', 'login')->name('login');
         Route::post('/checkLogin', 'checkLogin');
         Route::get('/register', 'register')->name('register');
