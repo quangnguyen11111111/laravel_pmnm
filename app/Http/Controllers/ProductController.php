@@ -53,27 +53,5 @@ class ProductController extends Controller
         var_dump($request->input('name'));
     }
 
-    public function login()
-    {
-        return view("auth.login");
-    }
 
-    public function checkLogin(Request $request)
-    {
-        if ($request->input('username') == 'quangnguyen' && $request->input('password') == '123456') {
-            return redirect('/')->with('success', 'Đăng nhập thành công!');
-        } else {
-
-            return redirect('/auth/login')->with('error', 'Sai tên đăng nhập hoặc mật khẩu!');
-        }
-    }
-    public function register()
-    {
-        return view("auth.register");
-    }
-
-    public function checkRegister()
-    {
-        return redirect('/auth/login')->with('success', 'Đăng ký thành công! Vui lòng đăng nhập.');
-    }
 }

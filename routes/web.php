@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AgeController;
 Route::get('/', function () {
     return view('home');
 })->name('home');
@@ -24,6 +25,13 @@ Route::prefix('/auth')->group(function () {
         Route::post('/checkLogin', 'checkLogin');
         Route::get('/register', 'register')->name('register');
         Route::post('/checkRegister', 'checkRegister');
+    });
+
+});
+Route::prefix('/age')->group(function () {
+     Route::controller(AgeController::class)->group(function () {
+        Route::get('/', 'showForm')->name('showForm');
+        Route::post('/store', 'storeAge')->name('storeAge');
     });
 
 });
