@@ -24,20 +24,22 @@
             <h2 class='font-[800] text-3xl'>Chào mừng đến với productPage</h2>
             <button class='bg-gray-500 px-5 py-3 rounded-3xl mt-10 text-white hover:bg-gray-400'>
     <a href="{{route('home')}}" >Về trang chủ</a>
-</button>
+    </button>
             <h2 class='font-[600] text-2xl mt-10'>Danh sách sản phẩm</h2>
 
 <table class='border w-[50rem]'>
     <tr class='border text-center'>
         <th class='border text-center'>Mã sản phẩm</th>
         <th class='border text-center'>Tên sản phẩm</th>
+        <th class='border text-center'>Giá sản phẩm</th>
         <th class='border text-center'>Số lượng</th>
     </tr>
     @foreach ($products as $product)
     <tr class='border text-center h-15'>
         <td class='border text-center'>{{ $product->id }}</td>
         <td class='border text-center'>{{ $product->name }}</td>
-        <td class='border text-center'>{{ $product->quantity }}</td>
+        <td class='border text-center'>{{ $product->price }}</td>
+        <td class='border text-center'>{{ $product->stock }}</td>
     </tr>
     @endforeach
 

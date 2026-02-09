@@ -48,3 +48,6 @@ Route::get('/chessboard/{n?}', function (
     return view('chessboard.chessboard', compact('n'));
 })->name('banco');
 
+Route::get('/admin', function () {
+    return view('layout.admin');
+});

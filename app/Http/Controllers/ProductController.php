@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -10,30 +11,9 @@ class ProductController extends Controller
     public function index()
     {
         $title = "Product List";
-        return view("product.index", [
-            "title" => $title,
-
-            "products" => [
-                [
-                    "id" => 1,
-                    'name' => "Product A",
-                    'price' => 100,
-                    'description' => "Description for Product A"
-                ],
-                [
-                    "id" => 2,
-                    'name' => "Product B",
-                    'price' => 200,
-                    'description' => "Description for Product B"
-                ],
-                [
-                    "id" => 3,
-                    'name' => "Product C",
-                    'price' => 300,
-                    'description' => "Description for Product C"
-                ],
-            ]
-        ]);
+        $products = Product::all();
+        // return view("product.index", ["products" => $products]);
+        return view("admin.product", ["products" => $products, "title" => $title]);
     }
 
     public function getDetail($id = 123)
