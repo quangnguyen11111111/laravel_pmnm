@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AgeController;
+use App\Http\Controllers\CategoryController;
+
 Route::get('/', function () {
     return view('home');
 })->name('home');
@@ -35,6 +37,9 @@ Route::prefix('/age')->group(function () {
     });
 
 });
+
+// Category routes
+Route::resource('categories', CategoryController::class)->except(['show']);
 
 Route::get('/student/{name?}/{mssv?}', function (
     string $name = 'Luong Xuan Hieu',
