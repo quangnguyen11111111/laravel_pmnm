@@ -21,7 +21,8 @@
         <!-- SidebarSearch Form -->
         <div class="form-inline">
             <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                    aria-label="Search">
                 <div class="input-group-append">
                     <button class="btn btn-sidebar">
                         <i class="fas fa-search fa-fw"></i>
@@ -32,13 +33,39 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item menu-open">
-                    <!-- Chỉnh sửa để thêm active nếu danh mục được lựa chọn -->
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                <li class="nav-item {{ request()->routeIs('products.*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->routeIs('products.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-box"></i>
+                        <p>
+                            Quản lý Sản phẩm
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('products.index') }}"
+                                class="nav-link {{ request()->routeIs('products.index') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Xem danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('products.create') }}"
+                                class="nav-link {{ request()->routeIs('products.create') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thêm mới</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item {{ request()->routeIs('categories.*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->routeIs('categories.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-tags"></i>
                         <p>
                             Quản lý danh mục
                             <i class="right fas fa-angle-left"></i>
@@ -46,19 +73,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                          
-                            <a href="{{ route('categories.index') }}" class="nav-link {{ request()->routeIs('categories.index') ? 'active' : '' }}">
+                            <a href="{{ route('categories.index') }}"
+                                class="nav-link {{ request()->routeIs('categories.index') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Xem danh sách</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('categories.create') }}" class="nav-link {{ request()->routeIs('categories.create') ? 'active' : '' }}">
+                            <a href="{{ route('categories.create') }}"
+                                class="nav-link {{ request()->routeIs('categories.create') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p> Tạo mới</p>
+                                <p>Tạo mới</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
                 <li class="nav-item">

@@ -9,18 +9,12 @@ use App\Http\Controllers\CategoryController;
 Route::get('/', function () {
     return view('products.index');
 })->name('home');
+Route::get('/product-detail', function () {
+    return view('products.detailproduct');
+})->name('product.detail');
 
+Route::resource('products', ProductController::class)->except(['show']);
 
-Route::prefix('/product')->group(function () {
-
-     Route::controller(ProductController::class)->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/add', 'create')->name('add');
-        Route::get('/detail/{id?}', 'getDetail')->name('show');
-        Route::post('/store', 'store');
-    });
-
-});
 Route::prefix('/auth')->group(function () {
      Route::controller(AuthController::class)->group(function () {
         Route::get('/login', 'login')->name('login');
