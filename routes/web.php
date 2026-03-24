@@ -7,7 +7,7 @@ use App\Http\Controllers\AgeController;
 use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
-    return view('home');
+    return view('products.index');
 })->name('home');
 
 
